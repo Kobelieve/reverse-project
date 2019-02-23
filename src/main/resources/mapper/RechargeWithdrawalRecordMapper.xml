@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kobe.mybatis.mapper.RechargeWithdrawalRecordMapper">
+  <resultMap id="BaseResultMap" type="com.kobe.mybatis.model.RechargeWithdrawalRecord">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="platform_id" jdbcType="BIGINT" property="platformId" />
+    <result column="serial_number" jdbcType="VARCHAR" property="serialNumber" />
+    <result column="operate_type" jdbcType="TINYINT" property="operateType" />
+    <result column="operate_price" jdbcType="BIGINT" property="operatePrice" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="finance_trade_no" jdbcType="VARCHAR" property="financeTradeNo" />
+    <result column="finished" jdbcType="TIMESTAMP" property="finished" />
+    <result column="bank_submit_no" jdbcType="VARCHAR" property="bankSubmitNo" />
+    <result column="bank_name" jdbcType="VARCHAR" property="bankName" />
+    <result column="order_code" jdbcType="VARCHAR" property="orderCode" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
+    <result column="modified" jdbcType="TIMESTAMP" property="modified" />
+    <result column="yn" jdbcType="TINYINT" property="yn" />
+    <result column="invalid" jdbcType="TINYINT" property="invalid" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, user_id, platform_id, serial_number, operate_type, operate_price, status, finance_trade_no, 
+    finished, bank_submit_no, bank_name, order_code, remark, created, modified, yn, invalid
+  </sql>
+  <select id="selectByExample" parameterType="com.kobe.mybatis.model.RechargeWithdrawalRecordExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from recharge_withdrawal_record
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from recharge_withdrawal_record
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from recharge_withdrawal_record
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.kobe.mybatis.model.RechargeWithdrawalRecordExample">
+    delete from recharge_withdrawal_record
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.kobe.mybatis.model.RechargeWithdrawalRecord">
+    insert into recharge_withdrawal_record (id, user_id, platform_id, 
+      serial_number, operate_type, operate_price, 
+      status, finance_trade_no, finished, 
+      bank_submit_no, bank_name, order_code, 
+      remark, created, modified, 
+      yn, invalid)
+    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{platformId,jdbcType=BIGINT}, 
+      #{serialNumber,jdbcType=VARCHAR}, #{operateType,jdbcType=TINYINT}, #{operatePrice,jdbcType=BIGINT}, 
+      #{status,jdbcType=TINYINT}, #{financeTradeNo,jdbcType=VARCHAR}, #{finished,jdbcType=TIMESTAMP}, 
+      #{bankSubmitNo,jdbcType=VARCHAR}, #{bankName,jdbcType=VARCHAR}, #{orderCode,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{created,jdbcType=TIMESTAMP}, #{modified,jdbcType=TIMESTAMP}, 
+      #{yn,jdbcType=TINYINT}, #{invalid,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kobe.mybatis.model.RechargeWithdrawalRecord">
+    insert into recharge_withdrawal_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="platformId != null">
+        platform_id,
+      </if>
+      <if test="serialNumber != null">
+        serial_number,
+      </if>
+      <if test="operateType != null">
+        operate_type,
+      </if>
+      <if test="operatePrice != null">
+        operate_price,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="financeTradeNo != null">
+        finance_trade_no,
+      </if>
+      <if test="finished != null">
+        finished,
+      </if>
+      <if test="bankSubmitNo != null">
+        bank_submit_no,
+      </if>
+      <if test="bankName != null">
+        bank_name,
+      </if>
+      <if test="orderCode != null">
+        order_code,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="modified != null">
+        modified,
+      </if>
+      <if test="yn != null">
+        yn,
+      </if>
+      <if test="invalid != null">
+        invalid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="platformId != null">
+        #{platformId,jdbcType=BIGINT},
+      </if>
+      <if test="serialNumber != null">
+        #{serialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="operateType != null">
+        #{operateType,jdbcType=TINYINT},
+      </if>
+      <if test="operatePrice != null">
+        #{operatePrice,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="financeTradeNo != null">
+        #{financeTradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="finished != null">
+        #{finished,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bankSubmitNo != null">
+        #{bankSubmitNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null">
+        #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="orderCode != null">
+        #{orderCode,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modified != null">
+        #{modified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="yn != null">
+        #{yn,jdbcType=TINYINT},
+      </if>
+      <if test="invalid != null">
+        #{invalid,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.kobe.mybatis.model.RechargeWithdrawalRecordExample" resultType="java.lang.Long">
+    select count(*) from recharge_withdrawal_record
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update recharge_withdrawal_record
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=BIGINT},
+      </if>
+      <if test="record.platformId != null">
+        platform_id = #{record.platformId,jdbcType=BIGINT},
+      </if>
+      <if test="record.serialNumber != null">
+        serial_number = #{record.serialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.operateType != null">
+        operate_type = #{record.operateType,jdbcType=TINYINT},
+      </if>
+      <if test="record.operatePrice != null">
+        operate_price = #{record.operatePrice,jdbcType=BIGINT},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=TINYINT},
+      </if>
+      <if test="record.financeTradeNo != null">
+        finance_trade_no = #{record.financeTradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.finished != null">
+        finished = #{record.finished,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.bankSubmitNo != null">
+        bank_submit_no = #{record.bankSubmitNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bankName != null">
+        bank_name = #{record.bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderCode != null">
+        order_code = #{record.orderCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null">
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.created != null">
+        created = #{record.created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modified != null">
+        modified = #{record.modified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.yn != null">
+        yn = #{record.yn,jdbcType=TINYINT},
+      </if>
+      <if test="record.invalid != null">
+        invalid = #{record.invalid,jdbcType=TINYINT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update recharge_withdrawal_record
+    set id = #{record.id,jdbcType=BIGINT},
+      user_id = #{record.userId,jdbcType=BIGINT},
+      platform_id = #{record.platformId,jdbcType=BIGINT},
+      serial_number = #{record.serialNumber,jdbcType=VARCHAR},
+      operate_type = #{record.operateType,jdbcType=TINYINT},
+      operate_price = #{record.operatePrice,jdbcType=BIGINT},
+      status = #{record.status,jdbcType=TINYINT},
+      finance_trade_no = #{record.financeTradeNo,jdbcType=VARCHAR},
+      finished = #{record.finished,jdbcType=TIMESTAMP},
+      bank_submit_no = #{record.bankSubmitNo,jdbcType=VARCHAR},
+      bank_name = #{record.bankName,jdbcType=VARCHAR},
+      order_code = #{record.orderCode,jdbcType=VARCHAR},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      created = #{record.created,jdbcType=TIMESTAMP},
+      modified = #{record.modified,jdbcType=TIMESTAMP},
+      yn = #{record.yn,jdbcType=TINYINT},
+      invalid = #{record.invalid,jdbcType=TINYINT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kobe.mybatis.model.RechargeWithdrawalRecord">
+    update recharge_withdrawal_record
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="platformId != null">
+        platform_id = #{platformId,jdbcType=BIGINT},
+      </if>
+      <if test="serialNumber != null">
+        serial_number = #{serialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="operateType != null">
+        operate_type = #{operateType,jdbcType=TINYINT},
+      </if>
+      <if test="operatePrice != null">
+        operate_price = #{operatePrice,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="financeTradeNo != null">
+        finance_trade_no = #{financeTradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="finished != null">
+        finished = #{finished,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bankSubmitNo != null">
+        bank_submit_no = #{bankSubmitNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null">
+        bank_name = #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="orderCode != null">
+        order_code = #{orderCode,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null">
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modified != null">
+        modified = #{modified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="yn != null">
+        yn = #{yn,jdbcType=TINYINT},
+      </if>
+      <if test="invalid != null">
+        invalid = #{invalid,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kobe.mybatis.model.RechargeWithdrawalRecord">
+    update recharge_withdrawal_record
+    set user_id = #{userId,jdbcType=BIGINT},
+      platform_id = #{platformId,jdbcType=BIGINT},
+      serial_number = #{serialNumber,jdbcType=VARCHAR},
+      operate_type = #{operateType,jdbcType=TINYINT},
+      operate_price = #{operatePrice,jdbcType=BIGINT},
+      status = #{status,jdbcType=TINYINT},
+      finance_trade_no = #{financeTradeNo,jdbcType=VARCHAR},
+      finished = #{finished,jdbcType=TIMESTAMP},
+      bank_submit_no = #{bankSubmitNo,jdbcType=VARCHAR},
+      bank_name = #{bankName,jdbcType=VARCHAR},
+      order_code = #{orderCode,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      created = #{created,jdbcType=TIMESTAMP},
+      modified = #{modified,jdbcType=TIMESTAMP},
+      yn = #{yn,jdbcType=TINYINT},
+      invalid = #{invalid,jdbcType=TINYINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
