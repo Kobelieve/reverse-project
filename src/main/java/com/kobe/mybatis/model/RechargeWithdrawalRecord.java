@@ -4,6 +4,7 @@ import java.util.Date;
 
 /**
  * 实体
+ * by ht
  */
 public class RechargeWithdrawalRecord {
     private Long id;
