@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 
 /**
  * mapper接口
+ * ht
  */
 public interface RechargeWithdrawalRecordMapper {
     long countByExample(RechargeWithdrawalRecordExample example);
