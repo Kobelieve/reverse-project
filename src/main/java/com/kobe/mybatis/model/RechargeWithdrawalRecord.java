@@ -2,6 +2,9 @@ package com.kobe.mybatis.model;
 
 import java.util.Date;
 
+/**
+ * 实体
+ */
 public class RechargeWithdrawalRecord {
     private Long id;
 

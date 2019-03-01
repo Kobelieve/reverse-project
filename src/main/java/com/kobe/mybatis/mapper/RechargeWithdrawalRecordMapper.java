@@ -5,6 +5,9 @@ import com.kobe.mybatis.model.RechargeWithdrawalRecordExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
+/**
+ * mapper接口
+ */
 public interface RechargeWithdrawalRecordMapper {
     long countByExample(RechargeWithdrawalRecordExample example);
 
