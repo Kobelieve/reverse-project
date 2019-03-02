@@ -3,7 +3,7 @@ package com.kobe.mybatis.model;
 import java.util.Date;
 
 /**
- * 实体
+ * 实体 -testRecord
  * by ht
  */
 public class RechargeWithdrawalRecord {
