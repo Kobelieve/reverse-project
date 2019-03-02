@@ -6,7 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 /**
- * mapper接口
+ * mapper接口 -test
  * ht
  */
 public interface RechargeWithdrawalRecordMapper {
