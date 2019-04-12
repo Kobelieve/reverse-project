@@ -1,0 +1,30 @@
+package com.jd.b2b.item.dao;
+
+import com.kobe.mybatis.model.ProductTemp;
+import com.kobe.mybatis.model.ProductTempExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
+
+public interface ProductTempMapper {
+    long countByExample(ProductTempExample example);
+
+    int deleteByExample(ProductTempExample example);
+
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(ProductTemp record);
+
+    int insertSelective(ProductTemp record);
+
+    List<ProductTemp> selectByExample(ProductTempExample example);
+
+    ProductTemp selectByPrimaryKey(Integer id);
+
+    int updateByExampleSelective(@Param("record") ProductTemp record, @Param("example") ProductTempExample example);
+
+    int updateByExample(@Param("record") ProductTemp record, @Param("example") ProductTempExample example);
+
+    int updateByPrimaryKeySelective(ProductTemp record);
+
+    int updateByPrimaryKey(ProductTemp record);
+}

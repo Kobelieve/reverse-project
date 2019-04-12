@@ -49,17 +49,19 @@
 		和mapper.java在同一目录下
 		 -->
 		<javaClientGenerator type="XMLMAPPER"
-			targetPackage="com.kobe.mybatis.mapper"
+			targetPackage="com.jd.b2b.item.dao"
 			targetProject="src/main/java">
 			<!-- enableSubPackages:是否让schema作为包的后缀 -->
 			<property name="enableSubPackages" value="false" />
 		</javaClientGenerator>
 		<!-- 指定数据库表 -->
-		<table tableName="recharge_withdrawal_record">
-            <columnOverride column="operate_type" javaType="Integer" />
+		<table tableName="product_temp">
+            <!--<columnOverride column="operate_type" javaType="Integer" />
             <columnOverride column="status" javaType="Integer" />
             <columnOverride column="yn" javaType="Integer" />
-            <columnOverride column="invalid" javaType="Integer" />
+            <columnOverride column="invalid" javaType="Integer" />-->
+            <columnOverride column="functiondesc" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <columnOverride column="functiondescnew" javaType="java.lang.String" jdbcType="VARCHAR" />
         </table>
 		<!-- <table schema="" tableName="sys_user"></table> -->
 		
